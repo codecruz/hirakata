@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hiragana</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="bg-gray-100 flex items-center justify-center min-h-screen">
+    <div class="bg-white p-8 rounded-lg shadow-md text-center">
+        <h1 class="text-3xl font-bold mb-6"></h1>
+        <p id="character" class="text-8xl mb-6">?</p>
+        <input type="text" id="answer" class="w-full p-2 border rounded mb-4" placeholder="Escribe la romanización" />
+        <button id="check" class="w-full bg-green-500 text-white p-2 rounded hover:bg-green-600">
+            Verificar
+        </button>
+        <p id="result" class="mt-4 text-lg"></p>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
