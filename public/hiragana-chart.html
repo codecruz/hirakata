@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hiragana Chart</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-50 font-sans">
+
+    <!-- Contenedor principal -->
+    <div class="container mx-auto p-6">
+        <h1 class="text-4xl font-bold text-center text-gray-800 mb-8">Hiragana Chart</h1>
+
+        <!-- Tabla de Hiragana básico -->
+        <div class="bg-white p-6 rounded-lg shadow-lg mb-8">
+            <h2 class="text-2xl font-semibold text-gray-700 mb-4">Hiragana Básico</h2>
+            <table class="w-full text-center">
+                <tbody id="hiragana-table-body" class="divide-y divide-gray-200">
+                    <!-- Las filas se generarán aquí dinámicamente -->
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Tabla de Hiragana compuesto (yōon) -->
+        <div class="bg-white p-6 rounded-lg shadow-lg">
+            <h2 class="text-2xl font-semibold text-gray-700 mb-4">Hiragana Compuesto (Yōon)</h2>
+            <table class="w-full text-center">
+                <tbody id="yoon-table-body" class="divide-y divide-gray-200">
+                    <!-- Las filas se generarán aquí dinámicamente -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Script para cargar y mostrar los datos del JSON -->
+    <script>
+        // Cargar el JSON con fetch
+        fetch('../data/hiragana.json')
+            .then(response => response.json())
+            .then(data => {
+                const tableBody = document.getElementById('hiragana-table-body');
+                const yoonTableBody = document.getElementById('yoon-table-body');
+
+                // Definir el orden de las filas (consonantes)
+                const consonantOrder = [
+                    '', // Vocales
+                    'k', 'g', // K y G
+                    's', 'z', // S y Z
+                    't', 'd', // T y D
+                    'n', // N
+                    'h', 'b', 'p', // H, B y P
+                    'm', // M
+                    'y', // Y
+                    'r', // R
+                    'w' // W
+                ];
+
+                // Generar las filas dinámicamente para la tabla principal
+                consonantOrder.forEach(consonant => {
+                    const row = document.createElement('tr');
+
+                    // Añadir las celdas en el orden a, i, u, e, o
+                    ['a', 'i', 'u', 'e', 'o'].forEach(vowel => {
+                        let romanization = consonant + vowel; // Ej: "ka", "sa", "ta"
+
+                        // Casos especiales: し (shi), ち (chi), つ (tsu), ふ (fu)
+                        if (consonant === 's' && vowel === 'i') romanization = 'shi';
+                        if (consonant === 't' && vowel === 'i') romanization = 'chi';
+                        if (consonant === 't' && vowel === 'u') romanization = 'tsu';
+                        if (consonant === 'h' && vowel === 'u') romanization = 'fu';
+
+                        // Buscar el carácter en el JSON
+                        const characterData = data.hiragana.find(item => item.romanization === romanization);
+
+                        const cell = document.createElement('td');
+                        cell.className = 'p-4 border border-gray-200';
+
+                        if (characterData) {
+                            cell.innerHTML = `
+                <div class="text-3xl font-bold text-gray-800">${characterData.character}</div>
+                <div class="text-sm text-gray-600 mt-1">${characterData.romanization}</div>
+              `;
+                        } else {
+                            cell.innerHTML = ''; // Espacios vacíos no muestran nada
+                        }
+
+                        row.appendChild(cell);
+                    });
+
+                    tableBody.appendChild(row);
+                });
+
+                // Añadir filas especiales (Y, W)
+                const specialRows = [
+                    { consonant: 'y', vowels: ['ya', '', 'yu', '', 'yo'] },
+                    { consonant: 'w', vowels: ['wa', 'wo', 'n', '', ''] }
+                ];
+
+                specialRows.forEach(rowData => {
+                    const row = document.createElement('tr');
+
+                    rowData.vowels.forEach(vowel => {
+                        const cell = document.createElement('td');
+                        cell.className = 'p-4 border border-gray-200';
+
+                        if (vowel) {
+                            const characterData = data.hiragana.find(item => item.romanization === vowel);
+
+                            if (characterData) {
+                                cell.innerHTML = `
+                  <div class="text-3xl font-bold text-gray-800">${characterData.character}</div>
+                  <div class="text-sm text-gray-600 mt-1">${characterData.romanization}</div>
+                `;
+                            } else {
+                                cell.innerHTML = ''; // Espacios vacíos no muestran nada
+                            }
+                        } else {
+                            cell.innerHTML = ''; // Espacios vacíos no muestran nada
+                        }
+
+                        row.appendChild(cell);
+                    });
+
+                    tableBody.appendChild(row);
+                });
+
+                // Añadir filas de caracteres compuestos (yōon) en la tabla separada
+                const yoonRows = [
+                    { consonant: 'ky', vowels: ['kya', 'kyu', 'kyo'] },
+                    { consonant: 'gy', vowels: ['gya', 'gyu', 'gyo'] },
+                    { consonant: 'sh', vowels: ['sha', 'shu', 'sho'] },
+                    { consonant: 'j', vowels: ['ja', 'ju', 'jo'] },
+                    { consonant: 'ch', vowels: ['cha', 'chu', 'cho'] },
+                    { consonant: 'ny', vowels: ['nya', 'nyu', 'nyo'] },
+                    { consonant: 'hy', vowels: ['hya', 'hyu', 'hyo'] },
+                    { consonant: 'by', vowels: ['bya', 'byu', 'byo'] },
+                    { consonant: 'py', vowels: ['pya', 'pyu', 'pyo'] },
+                    { consonant: 'my', vowels: ['mya', 'myu', 'myo'] },
+                    { consonant: 'ry', vowels: ['rya', 'ryu', 'ryo'] }
+                ];
+
+                yoonRows.forEach(rowData => {
+                    const row = document.createElement('tr');
+
+                    rowData.vowels.forEach(vowel => {
+                        const cell = document.createElement('td');
+                        cell.className = 'p-4 border border-gray-200';
+
+                        const characterData = data.hiragana.find(item => item.romanization === vowel);
+
+                        if (characterData) {
+                            cell.innerHTML = `
+                <div class="text-3xl font-bold text-gray-800">${characterData.character}</div>
+                <div class="text-sm text-gray-600 mt-1">${characterData.romanization}</div>
+              `;
+                        } else {
+                            cell.innerHTML = ''; // Espacios vacíos no muestran nada
+                        }
+
+                        row.appendChild(cell);
+                    });
+
+                    yoonTableBody.appendChild(row);
+                });
+            })
+            .catch(error => console.error('Error cargando el JSON:', error));
+    </script>
+
+</body>
+
+</html>
