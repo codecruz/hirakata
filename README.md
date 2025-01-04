@@ -35,4 +35,4 @@ This app is being developed iteratively to ensure a high-quality learning experi
 
 </div>
 
-Thank you for your patience and support as we continue to improve and expand the app. Stay tuned for updates! 🚀
+Stay tuned for updates! 🚀
