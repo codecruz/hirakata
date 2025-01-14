@@ -5,21 +5,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hiragana Chart</title>
-    <link href="./styles.css" rel="stylesheet">
+    <link rel="stylesheet" href="../styles.css">
 </head>
 
-<body class="bg-gray-50 font-sans">
+<body class="bg-gray-100 font-sans">
     <div class="container mx-auto p-6">
-        <h1 class="text-4xl font-bold text-center text-gray-800 mb-8">Hiragana Chart</h1>
+        <!-- Título -->
+        <h1 class="text-4xl font-bold text-center text-red-500 mb-8">Tabla de Hiragana</h1>
+
+        <!-- Tabla de Hiragana Básico -->
         <div class="bg-white p-6 rounded-lg shadow-lg mb-8">
-            <h2 class="text-2xl font-semibold text-gray-700 mb-4">Hiragana Básico</h2>
+            <h2 class="text-2xl font-semibold text-gray-800 mb-4">Hiragana Básico</h2>
             <table class="w-full text-center">
                 <tbody id="hiragana-table-body" class="divide-y divide-gray-200">
                 </tbody>
             </table>
         </div>
+
+        <!-- Tabla de Hiragana Compuesto (Yōon) -->
         <div class="bg-white p-6 rounded-lg shadow-lg">
-            <h2 class="text-2xl font-semibold text-gray-700 mb-4">Hiragana Compuesto (Yōon)</h2>
+            <h2 class="text-2xl font-semibold text-gray-800 mb-4">Hiragana Compuesto (Yōon)</h2>
             <table class="w-full text-center">
                 <tbody id="yoon-table-body" class="divide-y divide-gray-200">
                 </tbody>
@@ -100,7 +105,7 @@
                     }
                 });
 
-                // fila especial para "wa", "wo" y "n"
+                // Fila especial para "wa", "wo" y "n"
                 const specialRow = document.createElement('tr');
                 const specialCharacters = ['wa', 'wo', 'n'];
                 let specialRowHasData = false;
