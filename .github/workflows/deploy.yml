@@ -16,8 +16,8 @@ jobs:
       # Paso 2: Mover el contenido de /public a la raíz
       - name: Move /public to root
         run: |
-          cp -r public/* .  # Copia el contenido de /public a la raíz
-          rm -rf public     # Elimina la carpeta /public
+          mkdir -p public
+          cp -r public/* .  # Mueve el contenido de /public a la raíz
 
       # Paso 3: Crear el archivo .nojekyll en la raíz
       - name: Add .nojekyll file
