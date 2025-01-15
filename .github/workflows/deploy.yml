@@ -13,16 +13,6 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      # Paso 2: Mover el contenido de /public a la raíz
-      - name: Move /public to root
-        run: |
-          mkdir -p public
-          cp -r public/* .  # Mueve el contenido de /public a la raíz
-
-      # Paso 3: Crear el archivo .nojekyll en la raíz
-      - name: Add .nojekyll file
-        run: touch .nojekyll  # Crea el archivo .nojekyll en la raíz
-
       # Paso 4: Desplegar a GitHub Pages
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
