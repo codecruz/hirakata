@@ -3,25 +3,29 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches:
-      - main  
+      - main  # Cambia esto a la rama que usas para desplegar (por ejemplo, main o master)
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
+      # Paso 1: Checkout del código
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: '14'
+      # Paso 2: Mover el contenido de /public a la raíz
+      - name: Move /public to root
+        run: |
+          mkdir -p public
+          cp -r public/* .  # Mueve el contenido de /public a la raíz
 
-      - name: Install dependencies
-        run: npm install
+      # Paso 3: Crear el archivo .nojekyll en la raíz
+      - name: Add .nojekyll file
+        run: touch .nojekyll  # Crea el archivo .nojekyll en la raíz
 
+      # Paso 4: Desplegar a GitHub Pages
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
-          github_token: ${{ secrets.HK_KEY }}
-          publish_dir: ./ 
+          github_token: ${{ secrets.HK_KEY }}  # Usa el token de acceso personal
+          publish_dir: ./  # Publica desde la raíz
