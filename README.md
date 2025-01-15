@@ -1,7 +1,7 @@
 ## HiraKata 
 
 <div align="center">
-  <img src="./public/img/hirakata-desktop.jpeg" alt="Tabla de Hiragana">
+  <img src="./img/hirakata-desktop.jpeg" alt="Tabla de Hiragana">
 </div>
 
 This application is currently a **Work in Progress (WIP)**. At the moment, it includes the following features:
@@ -10,7 +10,7 @@ This application is currently a **Work in Progress (WIP)**. At the moment, it in
 A complete reference table for all Hiragana and Katakana characters, including basic characters, dakuten (゛), handakuten (゜), and combinations (e.g., きゃ, きゅ, きょ).
 
 <div align="center">
-  <img src="./public/img/chart-1.png" alt="Tabla de Hiragana">
+  <img src="./img/chart-1.png" alt="Tabla de Hiragana">
 </div>
 
 <br/>
@@ -19,7 +19,7 @@ A complete reference table for all Hiragana and Katakana characters, including b
 A simple quiz mode where you can test your knowledge of Hiragana characters. The quiz randomly selects characters from the Hiragana table, including variations, to help you practice recognition and recall.
 
 <div align="center">
-  <img src="./public/img/quizz-1.png" alt="Hiragana Quizz">
+  <img src="./img/quizz-1.png" alt="Hiragana Quizz">
 </div>
 
 
