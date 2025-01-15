@@ -4,21 +4,70 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hiragana</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Aprende Japonés con HiraKata - Hiragana, Katakana y Kanji</title>
+    <link rel="stylesheet" href="./styles.css">
 </head>
 
-<body class="bg-gray-100 flex items-center justify-center min-h-screen">
-    <div class="bg-white p-8 rounded-lg shadow-md text-center">
-        <h1 class="text-3xl font-bold mb-6"></h1>
-        <p id="character" class="text-8xl mb-6">?</p>
-        <input type="text" id="answer" class="w-full p-2 border rounded mb-4" placeholder="Escribe la romanización" />
-        <button id="check" class="w-full bg-green-500 text-white p-2 rounded hover:bg-green-600">
-            Verificar
-        </button>
-        <p id="result" class="mt-4 text-lg"></p>
-    </div>
-    <script src="script.js"></script>
+<body class="bg-gray-100 text-gray-800">
+    <header class="bg-red-500 shadow-lg">
+        <!-- Logo Centrado -->
+        <div class="flex justify-center pt-8">
+            <img class="h-20" alt="Logo Hirakata" src="./hirakata-nobg.png">
+        </div>
+    
+        <!-- Descripción -->
+        <div class="text-center pb-6">
+            <p class="mt-2 text-lg text-white">Domina los silabarios Hiragana y Katakana, y prepárate para los Kanji.</p>
+        </div>
+    
+        <!-- Barra de Menú -->
+        <nav class="bg-red-600 py-3 shadow-md">
+            <div class="container mx-auto flex justify-center space-x-8">
+                <a href="../hiragana/index.html" class="text-white hover:text-gray-200 transition-colors text-lg font-semibold border-b-2 border-transparent hover:border-white">
+                    Hiragana
+                </a>
+                <a href="../katakana/index.html" class="text-white hover:text-gray-200 transition-colors text-lg font-semibold border-b-2 border-transparent hover:border-white">
+                    Katakana
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Sección de características -->
+    <section class="py-12 px-4">
+        <h2 class="text-3xl font-bold text-center mb-8">¿Qué ofrece nuestra aplicación?</h2>
+        <div class="flex flex-wrap justify-center gap-6">
+            <!-- Tarjeta 1: Hiragana -->
+            <div class="bg-white rounded-lg shadow-lg p-6 w-80 transition-transform transform hover:-translate-y-2">
+                <h3 class="text-2xl font-semibold mb-4">Hiragana</h3>
+                <p class="text-gray-600">Aprende y practica todos los caracteres Hiragana, incluyendo dakuten, handakuten
+                    y combinaciones.</p>
+            </div>
+            <!-- Tarjeta 2: Katakana -->
+            <div class="bg-white rounded-lg shadow-lg p-6 w-80 transition-transform transform hover:-translate-y-2">
+                <h3 class="text-2xl font-semibold mb-4">Katakana</h3>
+                <p class="text-gray-600">Domina el silabario Katakana con ejercicios interactivos y cuestionarios.</p>
+            </div>
+            <!-- Tarjeta 3: Kanji (futuro) -->
+            <div class="bg-white rounded-lg shadow-lg p-6 w-80 transition-transform transform hover:-translate-y-2">
+                <h3 class="text-2xl font-semibold mb-4">Kanji (próximamente)</h3>
+                <p class="text-gray-600">Prepárate para aprender Kanji con métodos efectivos y progresivos.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Llamado a la acción -->
+    <section class="py-12 px-4 text-center">
+        <h2 class="text-3xl font-bold mb-6">¡Comienza tu viaje ahora!</h2>
+        <button class="bg-red-500 text-white px-8 py-3 rounded-lg text-lg hover:bg-red-600 transition-colors"
+            onclick="alert('¡Próximamente disponible!')">Empieza a Aprender</button>
+    </section>
+
+    <!-- Pie de página -->
+    <footer class="bg-gray-800 text-white py-6 text-center">
+        <p>© 2023 HiraKata. Desarrollado con ❤️ por <a href="#" target="_blank"
+                class="text-red-400 hover:underline">codecruz</a>.</p>
+    </footer>
 </body>
 
 </html>

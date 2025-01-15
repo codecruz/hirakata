@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>katakana</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="bg-gray-100 text-gray-800">
+    <!-- Barra de Navegación -->
+    <nav class="bg-red-500 p-4 shadow-lg">
+        <div class="container mx-auto flex justify-between items-center">
+            <a href="../index.html" class="text-white text-2xl font-bold">HiraKata</a>
+            <div class="space-x-4">
+                <a href="../hiragana/index.html" class="text-white hover:text-gray-200 transition-colors">Hiragana</a>
+                <a href="../katakana/index.html" class="text-white hover:text-gray-200 transition-colors">Katakana</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Contenido Principal -->
+    <div class="flex items-center justify-center min-h-screen">
+        <div class="bg-white p-8 rounded-lg shadow-lg text-center w-96 relative"> <!-- Añadido relative aquí -->
+            <!-- Título -->
+            <h1 class="text-3xl font-bold mb-6 text-red-500">Practica Katakana</h1>
+
+            <!-- Icono de Ayuda en la esquina superior derecha -->
+            <span><a href="katakana-chart.html" target="_blank" class="help-icon" aria-label="Ver tabla completa de katakana">
+                
+            </a></span>
+
+            <!-- Carácter katakana -->
+            <div class="flex items-center justify-center mb-6">
+                <p id="character" class="text-8xl text-gray-800">?</p>
+            </div>
+
+            <!-- Input de Respuesta -->
+            <input type="text" id="answer" class="w-full p-3 border border-gray-300 rounded-lg mb-4 focus:outline-none focus:ring-2 focus:ring-red-500" placeholder="Escribe la romanización" />
+
+            <!-- Botón de Verificación -->
+            <button id="check" class="w-full bg-red-500 text-white p-3 rounded-lg hover:bg-red-600 transition-colors">
+                Verificar
+            </button>
+
+            <!-- Resultado -->
+            <p id="result" class="mt-4 text-lg text-gray-700"></p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

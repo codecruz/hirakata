@@ -4,22 +4,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hiragana Chart</title>
-    <link href="./styles.css" rel="stylesheet">
+    <title>katakana Chart</title>
+    <link rel="stylesheet" href="../styles.css">
 </head>
 
-<body class="bg-gray-50 font-sans">
+<body class="bg-gray-100 font-sans">
+    <nav class="bg-red-500 p-4 shadow-lg">
+        <div class="container mx-auto flex justify-between items-center">
+            <a href="../index.html" class="text-white text-2xl font-bold">HiraKata</a>
+            <div class="space-x-4">
+                <a href="../hiragana/index.html" class="text-white hover:text-gray-200 transition-colors">Hiragana</a>
+                <a href="../katakana/index.html" class="text-white hover:text-gray-200 transition-colors">Katakana</a>
+            </div>
+        </div>
+    </nav>
     <div class="container mx-auto p-6">
-        <h1 class="text-4xl font-bold text-center text-gray-800 mb-8">Hiragana Chart</h1>
+        <!-- Título -->
+        <h1 class="text-4xl font-bold text-center text-red-500 mb-8">Tabla de Katakana</h1>
+
+        <!-- Tabla de katakana Básico -->
         <div class="bg-white p-6 rounded-lg shadow-lg mb-8">
-            <h2 class="text-2xl font-semibold text-gray-700 mb-4">Hiragana Básico</h2>
             <table class="w-full text-center">
-                <tbody id="hiragana-table-body" class="divide-y divide-gray-200">
+                <tbody id="katakana-table-body" class="divide-y divide-gray-200">
                 </tbody>
             </table>
         </div>
+
+        <!-- Tabla de katakana Compuesto (Yōon) -->
         <div class="bg-white p-6 rounded-lg shadow-lg">
-            <h2 class="text-2xl font-semibold text-gray-700 mb-4">Hiragana Compuesto (Yōon)</h2>
+            <h2 class="text-2xl font-semibold text-gray-800 mb-4">katakana Compuesto (Yōon)</h2>
             <table class="w-full text-center">
                 <tbody id="yoon-table-body" class="divide-y divide-gray-200">
                 </tbody>
@@ -28,10 +41,10 @@
     </div>
 
     <script>
-        fetch('../data/hiragana.json')
+        fetch('../data/katakana.json')
             .then(response => response.json())
             .then(data => {
-                const tableBody = document.getElementById('hiragana-table-body');
+                const tableBody = document.getElementById('katakana-table-body');
                 const yoonTableBody = document.getElementById('yoon-table-body');
 
                 const consonantOrder = [
@@ -64,7 +77,7 @@
                         if (consonant === 'z' && vowel === 'u') romanization = 'zu';
                         if (consonant === 'd' && vowel === 'u') romanization = 'dzu';
 
-                        const characterData = data.hiragana.find(item => item.romanization === romanization);
+                        const characterData = data.katakana.find(item => item.romanization === romanization);
 
                         if (characterData && characterData.romanization !== "wa" && characterData.romanization !== "wo" && characterData.romanization !== "n") {
                             const cell = document.createElement('td');
@@ -100,7 +113,7 @@
                     }
                 });
 
-                // fila especial para "wa", "wo" y "n"
+                // Fila especial para "wa", "wo" y "n"
                 const specialRow = document.createElement('tr');
                 const specialCharacters = ['wa', 'wo', 'n'];
                 let specialRowHasData = false;
@@ -109,7 +122,7 @@
                     const cell = document.createElement('td');
                     cell.className = 'p-4 border border-gray-200';
 
-                    const characterData = data.hiragana.find(item => item.romanization === romanization);
+                    const characterData = data.katakana.find(item => item.romanization === romanization);
 
                     if (characterData) {
                         cell.innerHTML = `
@@ -158,7 +171,7 @@
                         const cell = document.createElement('td');
                         cell.className = 'p-4 border border-gray-200';
 
-                        const characterData = data.hiragana.find(item => item.romanization === vowel);
+                        const characterData = data.katakana.find(item => item.romanization === vowel);
 
                         if (characterData) {
                             cell.innerHTML = `
