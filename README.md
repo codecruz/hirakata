@@ -15,13 +15,18 @@ A complete reference table for all Hiragana and Katakana characters, including b
 
 <br/>
 
-## **Random Hiragana Quiz**: 
-A simple quiz mode where you can test your knowledge of Hiragana characters. The quiz randomly selects characters from the Hiragana table, including variations, to help you practice recognition and recall.
+## **Random Hiragana and Katakana Quizzes**
+A simple quiz mode where you can test your knowledge of Hiragana and Katakana characters. The quiz randomly selects characters from the Hiragana / Katakana table, including variations, to help you practice recognition and recall.
 
 <div align="center">
-  <img src="./img/quizz-1.png" alt="Hiragana Quizz">
+  <img src="./img/katakana-quizz-01.png" alt="Katakana Reverse Quizz">
+  <img src="./img/hiragana-quizz.png" alt="Hiragana Quizz">
 </div>
+ 
+## **💡New Feature: Reverse Mode (Kana to Romaji)** 
+Now you can practice writing Japanese characters from their romanization! Switch to "Reverse Mode" and challenge yourself to recall the correct Hiragana or Katakana character based on its Romaji equivalent. Perfect for mastering both recognition and writing skills!
 
+<div align="center"> <img src="./img/reverse-mode.png" alt="Reverse Mode Link"> </div>
 
 ### Planned Features:
 - **Kanji Learning**: Once the Hiragana and Katakana features are fully developed, the app will expand to include Kanji characters, starting with the most basic ones and gradually introducing more complex characters.
