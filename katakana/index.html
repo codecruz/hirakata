@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>katakana</title>
+    <title>Katakana</title>
     <link rel="stylesheet" href="../styles.css">
 </head>
 
@@ -30,43 +30,36 @@
                     class="text-white hover:text-gray-200 transition-colors text-lg font-semibold border-b-2 border-transparent hover:border-white">
                     Katakana
                 </a>
-                <a
+                <a id="toggle-mode"
                     class="hover:cursor-pointer flex items-center gap-2 text-white hover:text-gray-200 transition-colors text-lg font-semibold border-b-2 border-transparent hover:border-white">
-                    <img src="../img/alphabet.png" alt="Modo oscuro" class="h-5 w-6">
+                    <img src="../img/alphabet.png" alt="Modo normal" class="h-5 w-6">
                     ➡️
-                    <img src="../img/letter-a.png" alt="Modo oscuro" class="h-5 w-6">
+                    <img src="../img/letter-a.png" alt="Modo reverse" class="h-5 w-6">
                 </a>
             </div>
         </nav>
     </header>
 
-
     <div class="flex items-center justify-center min-h-screen">
         <div class="bg-white p-8 rounded-lg shadow-lg text-center w-96 relative">
-
             <h1 class="text-3xl font-bold mb-6 text-red-500">Practica Katakana</h1>
 
-
-            <span><a href="katakana-chart.html" target="_blank" class="help-icon"
-                    aria-label="Ver tabla completa de katakana">
-
-                </a></span>
-
+            <span>
+                <a href="katakana-chart.html" target="_blank" class="help-icon"
+                    aria-label="Ver tabla completa de katakana"></a>
+            </span>
 
             <div class="flex items-center justify-center mb-6">
                 <p id="character" class="text-8xl text-gray-800">?</p>
             </div>
 
-
             <input type="text" id="answer"
                 class="w-full p-3 border border-gray-300 rounded-lg mb-4 focus:outline-none focus:ring-2 focus:ring-red-500"
                 placeholder="Escribe la romanización" />
 
-
             <button id="check" class="w-full bg-red-500 text-white p-3 rounded-lg hover:bg-red-600 transition-colors">
                 Verificar
             </button>
-
 
             <p id="result" class="mt-4 text-lg text-gray-700"></p>
         </div>
