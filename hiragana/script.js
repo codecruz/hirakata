@@ -1,47 +1,80 @@
-let hiraganaData = [];
-let currentCharacter = null;
+let isReverseMode = false; 
+let hiraganaData = []; 
+let currentCharacter = null; 
+let currentRomanization = null;
 
-// Elementos del DOM
-const characterElement = document.getElementById('character');
-const answerInput = document.getElementById('answer');
-const checkButton = document.getElementById('check');
-const resultElement = document.getElementById('result');
-
-fetch('../data/hiragana.json')
-    .then(response => response.json())
-    .then(data => {
+async function loadHiraganaData() {
+    try {
+        const response = await fetch('../data/hiragana.json');
+        const data = await response.json();
         hiraganaData = data.hiragana;
-        showRandomCharacter(); 
-    })
-    .catch(error => console.error('Error cargando el JSON:', error));
+        loadNewCharacter();
+    } catch (error) {
+        console.error('Error cargando el JSON:', error);
+    }
+}
 
-function showRandomCharacter() {
+function getRandomCharacter() {
     const randomIndex = Math.floor(Math.random() * hiraganaData.length);
-    currentCharacter = hiraganaData[randomIndex];
-    characterElement.textContent = currentCharacter.character;
+    return hiraganaData[randomIndex];
+}
+
+function updateUI() {
+    const characterElement = document.getElementById("character");
+    const answerInput = document.getElementById("answer");
+    const toggleButton = document.getElementById("toggle-mode");
+
+    if (isReverseMode) {
+        // Modo Reverse: Mostrar la romanización y pedir el carácter
+        characterElement.textContent = currentRomanization;
+        answerInput.placeholder = "Escribe el carácter en japonés";
+    } else {
+        // Modo Normal: Mostrar el carácter y pedir la romanización
+        characterElement.textContent = currentCharacter;
+        answerInput.placeholder = "Escribe la romanización";
+    }
 }
 
 function checkAnswer() {
-    const userAnswer = answerInput.value.trim().toLowerCase();
-    const correctAnswer = currentCharacter.romanization;
+    const userAnswer = document.getElementById("answer").value.trim();
+    const resultElement = document.getElementById("result");
 
-    if (userAnswer === correctAnswer) {
-        resultElement.textContent = '¡Correcto! 🎉';
-        resultElement.style.color = 'green';
-        showRandomCharacter(); // Mostrar un nuevo carácter aleatorio
+    if (isReverseMode) {
+        // Modo Reverse: Comparar con el carácter en japonés
+        if (userAnswer === currentCharacter) {
+            resultElement.textContent = "¡Correcto!";
+            resultElement.style.color = "green";
+        } else {
+            resultElement.textContent = `Incorrecto. La respuesta correcta es: ${currentCharacter}`;
+            resultElement.style.color = "red";
+        }
     } else {
-        resultElement.textContent = `Incorrecto. La respuesta correcta es "${correctAnswer}". ❌`;
-        resultElement.style.color = 'red';
+        // Modo Normal: Comparar con la romanización
+        if (userAnswer === currentRomanization) {
+            resultElement.textContent = "¡Correcto!";
+            resultElement.style.color = "green";
+        } else {
+            resultElement.textContent = `Incorrecto. La respuesta correcta es: ${currentRomanization}`;
+            resultElement.style.color = "red";
+        }
     }
 
-    // Limpiar el campo de entrada
-    answerInput.value = '';
+    document.getElementById("answer").value = "";
+    loadNewCharacter();
 }
 
-// Eventos
-checkButton.addEventListener('click', checkAnswer);
-answerInput.addEventListener('keypress', (e) => {
-    if (e.key === 'Enter') {
-        checkAnswer();
-    }
+function loadNewCharacter() {
+    const randomChar = getRandomCharacter();
+    currentCharacter = randomChar.character;
+    currentRomanization = randomChar.romanization;
+    updateUI();
+}
+
+document.getElementById("toggle-mode").addEventListener("click", () => {
+    isReverseMode = !isReverseMode;
+    updateUI();
 });
+
+document.getElementById("check").addEventListener("click", checkAnswer);
+
+loadHiraganaData();
